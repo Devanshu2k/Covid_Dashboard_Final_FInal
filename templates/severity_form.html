@@ -1,0 +1,247 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Severity Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 style="text-align:center; font-family: 'Times New Roman', Times, serif; font-weight: bold; ">Severity Prediction</h1><br><br>
+  <form class="form-horizontal" form enctype="multipart/form-data" action="/result" method="POST">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Age">Age:</label>
+      <div class="col-sm-10">
+        <input type="Age" class="form-control" id="Age" placeholder="Enter Age" name="Age">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="sex">Sex:</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="sex" name="Sex">
+       <option value="0">Male</option>
+       <option value="1">Female</option>
+      </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="SARS-CoV-2 nucleic acids">SARS-CoV-2 nucleic acids:</label>
+      <div class="col-sm-10">
+    <select class="form-control" id="SARS-CoV-2 nucleic acids" name="SARS-CoV-2 nucleic acids">
+      <option value ="0">Positive</option>
+      <option value ="1">Negative</option>
+      <option value ="2">Results Pending</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="Computed tomography (CT)">Computed tomography (CT):</label>
+<div class="col-sm-10">
+    <select class="form-control" id="Computed tomography (CT)" name="Computed tomography (CT)" step=any>
+      <option value="0">Positive</option>
+      <option value="1">Negative</option>
+    </select>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="Body Temprature">Body Temprature:</label>
+  <div class="col-sm-10">
+    <input type="number" class="form-control" id="Body Temprature" placeholder="Enter Body Temprature" name="Body Temprature" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="MCH">MCH:</label>
+  <div class="col-sm-10">
+    <input type="number" class="form-control" id="mch" placeholder="Enter MCH" name="MCH" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="HCT">HCT:</label>
+  <div class="col-sm-10">
+    <input type="number" id="HCT" name="HCT" class="form-control" placeholder="Enter HCT" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="RBC">RBC:</label>
+  <div class="col-sm-10">
+    <input type="number" id="RBC" name="RBC" class="form-control" placeholder="Enter RBC" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="PLT">PLT:</label>
+  <div class="col-sm-10">
+    <input type="number" id="PLT" name="PLT" class="form-control" placeholder="Enter PLT" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="MO">MO:</label>
+  <div class="col-sm-10">
+    <input type="number" id="MO" name="MO" class="form-control" placeholder="Enter MO" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="NE">NE:</label>
+  <div class="col-sm-10">
+    <input type="number" id="NE" name="NE" class="form-control" placeholder="Enter NE" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="EOP">EOP:</label>
+  <div class="col-sm-10">
+    <input type="number" id="EOP" name="EOP" class="form-control" placeholder="Enter EOP" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="LYP">LYP:</label>
+  <div class="col-sm-10">
+    <input type="number"  id="LYP" name="LYP" class="form-control" placeholder="Enter LYP" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="WBC">WBC:</label>
+  <div class="col-sm-10">
+    <input type="number" id="WBC" name="WBC" class="form-control" placeholder="Enter WBC" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="MCHC">MCHC:</label>
+  <div class="col-sm-10">
+    <input type="number" id="MCHC" name="MCHC" class="form-control" placeholder="Enter MCHC" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="MCV">MCV:</label>
+  <div class="col-sm-10">
+    <input type="number" id="MCV" name="MCV" class="form-control" placeholder="Enter MCV" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="HGB">HGB:</label>
+  <div class="col-sm-10">
+    <input id="HGB" name="HGB" class="form-control" placeholder="Enter HGB" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="MPV">MPV:</label>
+  <div class="col-sm-10">
+    <input type="number" id="MPV" name="MPV" class="form-control" placeholder="Enter MPV" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="EO">EO:</label>
+  <div class="col-sm-10">
+    <input type="number" id="EO" name="EO" class="form-control" placeholder="Enter EO" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="LY">LY:</label>
+  <div class="col-sm-10">
+    <input type="number" id="LY" name="LY" class="form-control" placeholder="Enter LY" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="BAP">BAP:</label>
+  <div class="col-sm-10">
+    <input type="number" id="BAP" name="BAP" class="form-control" placeholder="Enter BAP" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="MOP">MOP:</label>
+  <div class="col-sm-10">
+    <input type="number" id="MOP" name="MOP" class="form-control" placeholder="Enter MOP" step=any>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="NEP">NEP:</label>
+  <div class="col-sm-10">
+    <input type="number" id="NEP" name="NEP" class="form-control" placeholder="Enter NEP" step=any>
+  </div>
+</div>
+<br><br>
+
+<div class="upload-btn-wrapper" style="left:750px;">
+  <button class="btn">Upload</button>
+  <input type="submit" name="upload" value="Upload" />
+</div><br><br><br><br><br>
+
+
+
+
+  </form>
+</div>
+
+
+<style>
+
+.upload-btn-wrapper {
+  position: absolute;
+  overflow: hidden;
+  display: inline-block;
+  margin: auto;
+  width: auto;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=submit] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+body {
+background-color: #85DCBA
+}
+div{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+
+    
+
+{% endblock %}

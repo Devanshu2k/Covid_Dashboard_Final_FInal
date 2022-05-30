@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<img src="/vacc3.png"  style="width:90%;"><br><br>
+<div class="ll">
+<a href="/vacc1"><button>TOP 10 COUNTRIES IN VACCINATION PER 100 POPULATION</button></a> &nbsp;&nbsp;&nbsp;
+<a href="/vacc2"><button>TOP 10 COUNTRIES WITH THE MOST VACCINE DOSES ADMINISTERED</button></a> <br><br>
+<a href="/plots"><button>TOP 10 COUNTRIES WITH THE MOST CONFIRMED CASES</button></a> &nbsp;&nbsp;&nbsp;
+<a href="/deaths"><button>TOP 10 COUNTRIES WITH THE MOST DEATHS</button></a> &nbsp;&nbsp;&nbsp;
+<a href="/mortality"><button>TOP 10 COUNTRIES WITH THE HIGHEST MORTALITY RATES</button></a> <br><br> <br>
+</div>
+<style>
+  img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #85DCBA;
+}
+
+.ll{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button{
+  background-color: #659DBD;
+}
+
+body {
+background-color: #85DCBA
+}
+</style>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('chart',graphs,{});
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>World Map For Reported COVID-19 Cases</h1>
+  <div id='chart' class='chart'></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('chart',graphs,{});
+  
+</script>
+<br><br>
+<a href="/chloro1"><button style="background-color: #bfcf0d;">World Map For Total Vaccination Doses Per 100 Population</button></a> 
+<style>
+  body{
+    background-color: #85DCBA;
+  }
+</style>
+{% endblock %}
+
+

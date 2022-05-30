@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<style>
+body {
+background-image: url('/static/images/img_girl.jpg');
+background-repeat:no-repeat;
+
+background-size:cover;
+}
+
+h2 { 
+   position: absolute; 
+   top: 200px; 
+   left: 200px; 
+   width: 100%; 
+}
+
+h3 { 
+  color: white;
+   position: absolute; 
+   top: 200px; 
+   left: 200px; 
+   width: 100%; 
+}
+
+h2 span { 
+   color: white; 
+   font: bold 24px/45px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   padding: 10px; 
+}
+
+</style>
+
+    <h3>Covid Detection</h3>
+<div>
+  <h2><span>
+  <form enctype="multipart/form-data" action="/xray_result" method="POST">
+     
+    <label for="xray">Upload X-Ray :- </label>
+    <input type="file" id="ct" name="xray">
+    <br>
+
+    <input type="submit" value="Upload">
+  </form>
+</span></h2>
+</div>
+
+{% endblock %}

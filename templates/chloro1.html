@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>World Map For Total Vaccination Doses Per 100 Population</h1>
+  <div id='chart' class='chart'></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('chart',graphs,{});
+  
+</script>
+<style>
+  body{
+    background-color: #85DCBA;
+  }
+</style>
+{% endblock %}
+
+
